@@ -1,0 +1,30 @@
+
+html {
+    background-color: #000;
+}
+
+header,
+footer,
+section {
+    width: 100%;
+}
+
+header {
+}
+
+.l-content {
+    @include outer-container($max-width);
+    position: relative;
+
+    @include media($screen-medium) {
+        @include outer-container(90%);
+    }
+
+    @include media($screen-small) {
+        @media (orientation:landscape) {
+            @include outer-container(75%);
+        }
+    }
+}
+
+

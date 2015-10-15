@@ -1,0 +1,76 @@
+body {
+    @include font-feature-settings("kern", "liga", "pnum");
+    font-family: $base-font-family;
+    font-size: $base-font-size;
+    line-height: $base-line-height;
+    color: $base-font-color;
+    -webkit-font-smoothing: antialiased;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    margin: 0 0 $small-spacing;
+    font-family: $heading-font-family;
+    font-size: $base-font-size;
+    line-height: $heading-line-height;
+}
+
+h1 {
+    font-size: 10em;
+    line-height: 1;
+    font-style: normal;
+    color: rgba(255, 255, 255, 0.8);
+}
+
+h2 {
+    font-size: 3em;
+    font-weight: 300;
+    font-style: italic;
+    color: $orange;
+}
+
+h3 {
+    font-size: 2em;
+    font-weight: 300;
+}
+
+p {
+    margin: 0 0 $small-spacing;
+    font-size: 1em;
+    font-weight: 400;
+}
+
+a {
+    text-decoration: none;
+    transition: color 0.1s linear;
+    color: $action-color;
+
+    &:active,
+    &:focus,
+    &:hover {
+        color: darken($action-color, 15%);
+    }
+
+    &:active,
+    &:focus {
+        outline: none;
+    }
+}
+
+hr {
+    margin: $base-spacing 0;
+    border-top: 0;
+    border-right: 0;
+    border-bottom: $base-border;
+    border-left: 0;
+}
+
+img,
+picture {
+    max-width: 100%;
+    margin: 0;
+}

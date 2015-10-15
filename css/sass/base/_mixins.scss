@@ -1,0 +1,46 @@
+@mixin background-size($size) {
+    -webkit-background-size: $size;
+    -moz-background-size: $size;
+    -o-background-size: $size;
+    background-size: $size;
+}
+
+@mixin vertical-align {
+    position: relative;
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+}
+
+@include keyframes(fadeIn) {
+    0% {
+        @include transform(translate(0, -100px) scale(0.1));
+        opacity: 0;
+    }
+
+    60% {
+        @include transform(scale(1.2) translate(0, 0));
+    }
+
+    100% {
+        @include transform(scale(1) translate(0, -0));
+        opacity: 1;
+    }
+}
+
+@include keyframes(rotate) {
+    0% {
+        @include transform(rotate(-1720deg) scale(1));
+        opacity: 0;
+    }
+
+    60% {
+        @include transform(rotate(0deg) scale(1.5));
+    }
+
+    100% {
+        @include transform(rotate(0deg) scale(1));
+        opacity: 1;
+    }
+}

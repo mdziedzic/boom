@@ -1,0 +1,10 @@
+# humanstxt.org/
+# The humans responsible & technology colophon
+
+# TEAM
+
+    Michael Dziedzic -- Designer and Developer -- @michaeldziedzic
+
+# TECHNOLOGY COLOPHON
+
+    HTML5, CSS3, JavaScript, SASS, Bourbon, Neat

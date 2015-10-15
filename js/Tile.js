@@ -1,11 +1,29 @@
 
+var BOOM = BOOM || {};
 
-function Tile(tileType) {
-	this.uncovered = false;
-	this.flag = false;
-	this.tileType = tileType;
-}
+BOOM.Tile = function(tileType) {
+    this.tileType = tileType;
+    this.uncovered = false;
+    this.flag = false;
+};
 
-Tile.prototype = {
-	constructor: Tile
+BOOM.Tile.prototype = {
+
+    constructor: BOOM.Tile,
+
+    uncover: function () {
+        this.uncovered = true;
+    },
+
+    flag: function () {
+        this.flag = true;
+    },
+
+    unflag: function () {
+        this.flag = false;
+    },
+
+    hasFlag: function () {
+        return this.flag;
+    }
 };
