@@ -10,6 +10,8 @@ BOOM.GameBoardModel = function (width, height, bombPercent) {
     var tileArray,
     numberOfBombs,
     correctlyMarkedBombs;
+
+    // this.populateGameBoard();
 };
 
 BOOM.GameBoardModel.prototype = {
