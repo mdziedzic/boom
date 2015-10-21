@@ -27,9 +27,10 @@ $(document).ready(function () {
 		var numberOfTiles = [10, 20, 50, 100],
 			bombPercent = [5, 10, 20, 30];
 
-			BOOM.gbModel = new BOOM.GameBoardModel(numberOfTiles[difficulty], numberOfTiles[difficulty], bombPercent[difficulty]),
-			BOOM.gbView = new BOOM.GameBoardView(numberOfTiles[difficulty], numberOfTiles[difficulty]),
+			BOOM.gbModel = new BOOM.GameBoardModel(numberOfTiles[difficulty], numberOfTiles[difficulty], bombPercent[difficulty]);
+			BOOM.gbView = new BOOM.GameBoardView(numberOfTiles[difficulty], numberOfTiles[difficulty]);
 			BOOM.gbController = new BOOM.GameBoardController();
+
 	};
 
 });

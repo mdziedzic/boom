@@ -1,24 +1,48 @@
 body {
-    display: none;
+	display: none;
+
+	-moz-user-select: none; // Firefox
+	-ms-user-select: none; // Internet Explorer
+	-khtml-user-select: none; // KHTML browsers (e.g. Konqueror)
+	-webkit-user-select: none; // Chrome, Safari, and Opera
+	-webkit-touch-callout: none; // Disable Android and iOS callouts
+
 }
 
 header,
 footer,
 section {
-    width: 100%;
+	width: 100%;
 }
 
 h1 {
-    text-align: center;
+	text-align: center;
+	font-size: 12em;
+	/*font-weight: 400;*/
+	/*letter-spacing: -0.1em;*/
+}
+
+nav {
+	position: relative;
+	top: -100px;
 }
 
 ul {
-    /*display: block;*/
-    text-align: center;
+	text-align: center;
+	font-size: 3em;
 
-    li {
-        opacity: 0.5;
-    }
+	li {
+		opacity: 0.5;
+	}
+}
+
+.outline {
+    color: #000;
+    text-shadow:
+    -1px -1px 0 #ccc,
+    1px -1px 0 #ccc,
+    -1px 1px 0 #ccc,
+    1px 1px 0 #ccc;
 }
 
 

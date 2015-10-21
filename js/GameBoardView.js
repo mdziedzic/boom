@@ -20,15 +20,17 @@ $(document).ready(function () {
         constructor: BOOM.GameBoardView,
 
         createGameBoard: function() {
-            this.gameBoard = $('<div>');
-            this.gameBoard.attr('id', 'gameboard');
-            this.gameBoard.width(this.hTiles * this.tileSize);
-            for (var i = 0; i < this.hTiles; i++) {
-                for (var j = 0; j < this.vTiles; j++) {
+            this.gameBoard = $('<div>')
+                .attr('id', 'gameboard')
+                .width(this.hTiles * this.tileSize);
+            for (var i = 0; i < this.vTiles; i++) {
+                for (var j = 0; j < this.hTiles; j++) {
                     var tile = $('<div>').attr({
-                        id: i + '-' + j,
-                        class: 'tile'
+                        class: 'tile tile-covered',
+                        'data-vPos': i,
+                        'data-hPos': j
                     }).css('width', this.tileSize).css('height', this.tileSize);
+
                     tile.hover(
                         function () {
                             $(this).fadeTo(250, 0.5);
@@ -37,39 +39,55 @@ $(document).ready(function () {
                             $(this).fadeTo(250, 1);
                         }
                     ).click(
-                        function () {
-                            BOOM.gbController.saySomething();
+                        function (event) {
+                            BOOM.gbController.handleTileClick(event);
                         }
                     );
+
                     this.gameBoard.append(tile);
                 }
             }
-            this.gameBoardContainer.width(this.gameBoardWidth);
-            this.gameBoardContainer.css('marginLeft', -this.gameBoardWidth / 2);
-            this.gameBoardContainer.append(this.gameBoard);
-            this.gameBoardContainer.fadeIn(250);
+            this.gameBoardContainer.width(this.gameBoardWidth)
+                .css('marginLeft', -this.gameBoardWidth / 2)
+                .append(this.gameBoard)
+                .fadeIn(250);
         },
 
-        drawGameBoard: function () {
-
-            for (var i = 0; i < this.height; i++) {
-                for (var j = 0; j < this.width; j++) {
-                    if (this.tileArray[i][j].flag) {
-                        this.drawTile(i, j, this.TileType.FLAG);
-                    } else {
-                        if (this.tileArray[i][j].uncovered) {
-                            this.drawTile(i, j, this.tileArray[i][j].tileType);
-                        } else {
-                            this.drawTile(i, j, this.TileType.COVERED);
-                        }
-                    }
-                }
+        toggleFlag: function (vPos, hPos) {
+            var tile = this.locateTile(vPos, hPos);
+            if (tile.hasClass('tile-flagged')) {
+                tile.removeClass('tile-flagged')
+                    .addClass('tile-covered')
+                    .hover(
+                        function () {
+                            $(this).fadeTo(250, 0.5);
+                        },
+                        function () {
+                            $(this).fadeTo(250, 1);
+                        });
+            } else {
+                tile.removeClass('tile-covered')
+                    .addClass('tile-flagged')
+                    .unbind('mouseenter mouseleave')
+                    .fadeTo(250, 1);
             }
         },
 
-        drawTile: function (x, y, typeOfTile) {
+        uncoverTile: function (vPos, hPos) {
+            var tile = this.locateTile(vPos, hPos),
+                tileClassName = 'tile-' + BOOM.gbModel.tileArray[vPos][hPos].tileType,
+                tileText = BOOM.gbModel.tileArray[vPos][hPos].tileType === 9 ? '*' : BOOM.gbModel.tileArray[vPos][hPos].tileType;
+            tile.unbind()
+                .removeClass('tile-covered')
+                .addClass(tileClassName)
+                .html('<p>' + tileText + '</p>')
+                .fadeTo(250, 1);
+        },
 
-        }
+        locateTile: function (vPos, hPos) {
+            var index = Number(vPos) * this.hTiles + Number(hPos);
+            return this.gameBoard.children().eq(index);
+        },
 
     };
 
