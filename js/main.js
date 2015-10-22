@@ -25,7 +25,7 @@ $(document).ready(function () {
 	BOOM.gbMVC = function (difficulty) {
 
 		var numberOfTiles = [10, 20, 50, 100],
-			bombPercent = [5, 10, 20, 30];
+			bombPercent = [20, 20, 20, 20];
 
 			BOOM.gbModel = new BOOM.GameBoardModel(numberOfTiles[difficulty], numberOfTiles[difficulty], bombPercent[difficulty]);
 			BOOM.gbView = new BOOM.GameBoardView(numberOfTiles[difficulty], numberOfTiles[difficulty]);
