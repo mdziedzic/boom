@@ -115,14 +115,15 @@ BOOM.GameBoardModel.prototype = {
         vPos = Number(vPos);
         for (var i = -1; i < 2; i++) {
             for (var j = -1; j < 2; j++) {
-                if (((vPos + i) >= 0) && ((vPos + i) <= this.vTiles) &&
-                    ((hPos + j) >= 0) && ((hPos + j) <= this.hTiles)) {
+                if (((vPos + i) >= 0) && ((vPos + i) < this.vTiles) &&
+                    ((hPos + j) >= 0) && ((hPos + j) < this.hTiles)) {
                     var tile = this.tileArray[vPos + i][hPos + j];
                     // this.uncoverTile(vPos + i, hPos + j);
+console.log(vPos + i, hPos + j);
                     tile.covered = false;
                     BOOM.gbView.uncoverTile(vPos + i, hPos + j);
                     if (tile.tileType === this.TileType.BLANK) {
-                        this.tileType = this.TileType.SAFE;
+                        tile.tileType = this.TileType.SAFE;
                         this.uncoverSafeZone(vPos + i, hPos + j);
                     }
                 }
