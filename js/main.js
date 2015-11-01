@@ -1,6 +1,6 @@
-var BOOM = BOOM || {};
-
 'use strict';
+
+var BOOM = BOOM || {};
 
 $(document).ready(function () {
 
