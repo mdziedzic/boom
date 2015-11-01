@@ -1,18 +1,19 @@
+'use strict';
+
 /* global Tile */
 
 var BOOM = BOOM || {};
 
-'use strict';
-
 $(document).ready(function () {
 
-    BOOM.GameBoardView = function (hTiles, vTiles) {
+    BOOM.GameBoardView = function (hTiles, vTiles, tileSize) {
         this.hTiles = hTiles;
         this.vTiles = vTiles;
-        this.tileSize = 25;
+        this.tileSize = tileSize;
         this.gameBoard;
         this.gameBoardWidth = this.hTiles * this.tileSize;
         this.gameBoardContainer = $('#gameboardcontainer');
+        this.gameBoardShaker = $('#gameboardshaker');
     };
 
     BOOM.GameBoardView.prototype = {
@@ -74,20 +75,36 @@ $(document).ready(function () {
         },
 
         uncoverTile: function (vPos, hPos) {
-            var tile = this.locateTile(vPos, hPos),
-                tileClassName = 'tile-' + BOOM.gbModel.tileArray[vPos][hPos].tileType,
-                tileText = BOOM.gbModel.tileArray[vPos][hPos].tileType === 9 ? '*' : BOOM.gbModel.tileArray[vPos][hPos].tileType;
-            tile.unbind()
-                .removeClass('tile-covered')
-                .addClass(tileClassName)
+            var tile = this.locateTile(vPos, hPos);
+            var tileType = BOOM.gbModel.tileArray[vPos][hPos].tileType;
+            var tileClassName = 'tile-' + tileType;
+            var tileText = tileType === 9 ? '*' : tileType;
+            if (tileText === 0 || tileText === 12) {
+                tileText = '';
+            }
+            tile.removeClass('tile-covered')
                 .html('<p>' + tileText + '</p>')
-                .fadeTo(250, 1);
+                .fadeTo(250, 1)
+                .addClass('tile-uncovered')
+                .addClass(tileClassName)
+                .unbind();
         },
 
+        // finds position of tile in 1-dimenstional dom gameboard array
+        // from its location in the model's 2-dimensional array
         locateTile: function (vPos, hPos) {
             var index = Number(vPos) * this.hTiles + Number(hPos);
             return this.gameBoard.children().eq(index);
         },
+
+        gameOverLose: function () {
+            this.gameBoardShaker.addClass('game-over-lose');
+            setTimeout(function () {
+                $('body').fadeOut(750, function () {
+                    location.reload();
+                });
+            }, 5000);
+        }
 
     };
 
