@@ -3,11 +3,11 @@
     @include animation(fadeIn 0.5s ease-in);
     display: none;
     position: absolute;
-    top: 125px;
+    top: 0;
     left: 50%;
+    background-color: #fff;
     border: 1px solid #fff;
     box-shadow: -10px -10px 50px #111;
-    background-color: #fff;
 }
 
 #gameboard {
@@ -26,8 +26,22 @@
     background-color: #444;
 }
 
+.tile-uncovered {
+    @include animation(removeTile 0.5s ease-in);
+}
+
 .tile-flagged {
     background-color: #f00;
+}
+
+.game-over-lose {
+    @include animation(shake-slow 3s ease-in-out);
+}
+
+#gameboardshaker {
+    position: absolute;
+    top: 125px;
+    left: 50%;
 }
 
 .tile-0,
@@ -48,3 +62,12 @@
         font-weight: bold;
     }
 }
+
+
+
+
+
+
+
+
+
