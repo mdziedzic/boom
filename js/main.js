@@ -24,13 +24,18 @@ $(document).ready(function () {
 
 	BOOM.gbMVC = function (difficulty) {
 
-		var numberOfTiles = [10, 20, 50, 100],
-			bombPercent = [20, 20, 20, 20];
+		var numberOfTiles = [10, 20, 50, 100];
+		var bombPercent = [10, 10, 10, 10];
+		var tileSize = [50, 25, 25, 20];
+		var animSpeed = [10, 3, 1, 0];
 
-			BOOM.gbModel = new BOOM.GameBoardModel(numberOfTiles[difficulty], numberOfTiles[difficulty], bombPercent[difficulty]);
-			BOOM.gbView = new BOOM.GameBoardView(numberOfTiles[difficulty], numberOfTiles[difficulty]);
+			BOOM.gbModel = new BOOM.GameBoardModel(numberOfTiles[difficulty],
+				numberOfTiles[difficulty],
+				bombPercent[difficulty],
+				animSpeed[difficulty]);
+			BOOM.gbView = new BOOM.GameBoardView(numberOfTiles[difficulty],
+				numberOfTiles[difficulty],
+				tileSize[difficulty]);
 			BOOM.gbController = new BOOM.GameBoardController();
-
 	};
-
 });
