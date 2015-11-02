@@ -78,7 +78,7 @@ $(document).ready(function () {
             var tile = this.locateTile(vPos, hPos);
             var tileType = BOOM.gbModel.tileArray[vPos][hPos].tileType;
             var tileClassName = 'tile-' + tileType;
-            var tileText = tileType === 9 ? '*' : tileType;
+            var tileText = tileType === 9 ? '¤' : tileType;
             if (tileText === 0 || tileText === 12) {
                 tileText = '';
             }

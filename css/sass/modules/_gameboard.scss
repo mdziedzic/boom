@@ -31,7 +31,7 @@
 }
 
 .tile-flagged {
-    background-color: #f00;
+    background-color: #f80;
 }
 
 .game-over-lose {
@@ -61,6 +61,12 @@
         @include vertical-align;
         font-weight: bold;
     }
+}
+
+.tile-9 {
+    background-color: #f00;
+    font-size: 2em;
+    color: #fff;
 }
 
 
