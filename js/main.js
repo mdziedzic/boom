@@ -16,26 +16,26 @@ $(document).ready(function () {
 	).click(
 		function () {
 			event.preventDefault();
-			$('ul').hide();
+			$('ul, p').hide();
 			$('header').fadeTo(250, 0.75);
 			BOOM.gbMVC($(this).index());
 		}
 	);
-
-	BOOM.gbMVC = function (difficulty) {
-
-		var numberOfTiles = [10, 20, 50, 100];
-		var bombPercent = [10, 10, 10, 10];
-		var tileSize = [50, 25, 25, 20];
-		var animSpeed = [10, 3, 1, 0];
-
-			BOOM.gbModel = new BOOM.GameBoardModel(numberOfTiles[difficulty],
-				numberOfTiles[difficulty],
-				bombPercent[difficulty],
-				animSpeed[difficulty]);
-			BOOM.gbView = new BOOM.GameBoardView(numberOfTiles[difficulty],
-				numberOfTiles[difficulty],
-				tileSize[difficulty]);
-			BOOM.gbController = new BOOM.GameBoardController();
-	};
 });
+
+// BOOM.config is located in config.js
+BOOM.gbMVC = function (difficulty) {
+	BOOM.gbModel = new BOOM.GameBoardModel(
+		BOOM.config.numberOfHTiles[difficulty],
+		BOOM.config.numberOfVTiles[difficulty],
+		BOOM.config.bombPercent[difficulty],
+		BOOM.config.animSpeed[difficulty]);
+	BOOM.gbView = new BOOM.GameBoardView(
+		BOOM.config.numberOfHTiles[difficulty],
+		BOOM.config.numberOfVTiles[difficulty],
+		BOOM.config.tileSize[difficulty]);
+	BOOM.gbController = new BOOM.GameBoardController();
+
+	BOOM.gbModel.createGameBoard();
+	BOOM.gbView.createGameBoard();
+};
