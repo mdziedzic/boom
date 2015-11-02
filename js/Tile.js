@@ -10,17 +10,5 @@ BOOM.Tile = function(tileType) {
 
 BOOM.Tile.prototype = {
 
-    constructor: BOOM.Tile,
-
-    flag: function () {
-        this.flag = true;
-    },
-
-    unflag: function () {
-        this.flag = false;
-    },
-
-    hasFlag: function () {
-        return this.flag;
-    }
+    constructor: BOOM.Tile
 };
