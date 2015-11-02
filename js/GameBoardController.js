@@ -4,11 +4,7 @@
 
 var BOOM = BOOM || {};
 
-BOOM.GameBoardController = function () {
-
-	BOOM.gbModel.createGameBoard();
-	BOOM.gbView.createGameBoard();
-};
+BOOM.GameBoardController = function () {};
 
 BOOM.GameBoardController.prototype = {
 
@@ -31,5 +27,4 @@ BOOM.GameBoardController.prototype = {
 			}
 		}
 	}
-
 };
