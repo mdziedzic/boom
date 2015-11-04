@@ -90,23 +90,23 @@ $(document).ready(function () {
                 .unbind();
         },
 
-        // finds position of tile in 1-dimenstional dom gameboard array
-        // from its location in the model's 2-dimensional array
+        // finds position of tile in 1-dimensional dom element #gameboard array
         locateTile: function (vPos, hPos) {
             var index = Number(vPos) * this.hTiles + Number(hPos);
             return this.gameBoard.children().eq(index);
         },
 
-        gameOverLose: function () {
-            this.gameBoardShaker.addClass('game-over-lose');
+        gameOver: function (winOrLose) {
+            if (winOrLose === 'lose') {
+                $('.tile-9').css('background-color', '#f00').css('color', '#fff');
+                this.gameBoardShaker.addClass('game-over-lose');
+            }
             setTimeout(function () {
                 $('body').fadeOut(750, function () {
                     location.reload();
                 });
-            }, 5000);
+            }, 4000);
         }
-
     };
-
 });
 

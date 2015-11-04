@@ -100,9 +100,11 @@ BOOM.GameBoardModel.prototype = {
 			}
 		}
 		BOOM.gbView.toggleFlag(vPos, hPos);
+
+		// game won!
 		if (this.correctlyMarkedBombs === this.numberOfBombs &&
 			this.incorrectlyMarkedBombs === 0) {
-			this.gameOver(true);
+			this.gameOver('win');
 		}
 	},
 
@@ -110,8 +112,10 @@ BOOM.GameBoardModel.prototype = {
 		var tile = this.tileArray[vPos][hPos];
 		tile.covered = false;
 		BOOM.gbView.uncoverTile(vPos, hPos);
+
+		// game lost!
 		if (tile.tileType === this.TileType.BOMB) {
-			this.gameOver(false);
+			this.gameOver('lose');
 		} else if (tile.tileType === this.TileType.BLANK) {
 			tile.tileType = this.TileType.SAFE;
 			this.animTimer = 0;
@@ -119,11 +123,28 @@ BOOM.GameBoardModel.prototype = {
 		}
 	},
 
-	gameOver: function (won) {
-		if (won) {
-			console.log('game over!!! you win!!!')
+	gameOver: function (winOrLose) {
+		if (winOrLose === 'win') {
+			console.log('game over!!! you win!!!');
+			this.unCoverAllTiles();
+			BOOM.gbView.gameOver('win');
 		} else {
-			BOOM.gbView.gameOverLose();
+			BOOM.gbView.gameOver('lose');
+		}
+	},
+
+	unCoverAllTiles: function () {
+		var animTimer;
+		for (var i = 0; i < this.tileArray.length; i++) {
+			for (var j = 0; j < this.tileArray[i].length; j++) {
+				var that = this;
+				(function (iCl, jCl) {
+					setTimeout(function () {
+						that.toggleFlag(iCl, jCl);
+						BOOM.gbView.uncoverTile(iCl, jCl);
+					}, animTimer += that.animSpeed);
+				}(i, j));
+			}
 		}
 	},
 
