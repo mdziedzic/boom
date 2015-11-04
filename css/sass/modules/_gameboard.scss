@@ -36,6 +36,7 @@
 
 .game-over-lose {
     @include animation(shake-slow 3s ease-in-out);
+    @include animation-fill-mode(forwards);
 }
 
 #gameboardshaker {
