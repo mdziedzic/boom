@@ -77,7 +77,7 @@ BOOM.GameBoardModel.prototype.createGameBoard = function createGameBoard() {
     for (j = 1; j < hTilesTemp - 1; j++) {
       var numberOfAdjacentBombs = 0;
 
-      // if bomb, count the bombs in the adjacent 8 tiles.
+      // if not a bomb, count the bombs in the adjacent 8 tiles.
       if (tileArrayTemp[i][j].tileType !== this.TileType.BOMB) {
         for (k = -1; k < 2; k++) {
           for (l = -1; l < 2; l++) {
@@ -174,17 +174,10 @@ BOOM.GameBoardModel.prototype.uncoverSafeZone
           && hPos + j < this.hTiles) {
 
         var tile = this.tileArray[vPos + i][hPos + j];
-
-        // need to create closure with self-invoking
-        // function in order to ensure that
-        // each call of BOOM.gbView.uncoverTile() gets its own
-        // copy of i and j.
-        (function (vPosCl, hPosCl) {
-          if (!tile.flag) {
-            tile.covered = false;
-            BOOM.gbView.uncoverTile(vPosCl, hPosCl);
-          }
-        }(vPos + i, hPos + j));
+        if (!tile.flag) {
+          tile.covered = false;
+          BOOM.gbView.uncoverTile(vPos + i, hPos + j);
+        }
 
         // before recursing on a tile, set tileType to SAFE
         // in order to prevent multiple call to the same tile.
