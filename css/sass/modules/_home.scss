@@ -18,8 +18,15 @@ section {
 h1 {
 	text-align: center;
 	font-size: 12em;
-	/*font-weight: 400;*/
-	/*letter-spacing: -0.1em;*/
+}
+
+h2 {
+	display: none;
+	position: relative;
+	z-index: 5000;
+	margin: 0 auto;
+	margin-top: -50px;
+	text-align: center;
 }
 
 nav {
@@ -51,6 +58,11 @@ ul {
     1px -1px 0 #ccc,
     -1px 1px 0 #ccc,
     1px 1px 0 #ccc;
+}
+
+.outline-victory {
+	opacity: 0.5;
+	color: $orange;
 }
 
 
