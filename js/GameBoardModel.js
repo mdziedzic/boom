@@ -19,18 +19,16 @@ www.eggfoo.com
 var BOOM = BOOM || {};
 
 BOOM.GameBoardModel
-    = function GameBoardModel(hTiles, vTiles, bombPercent, animSpeed) {
+    = function GameBoardModel(hTiles, vTiles, bombPercent) {
 
   this.hTiles = hTiles;
   this.vTiles = vTiles;
   this.bombPercent = bombPercent;
-  this.animSpeed = animSpeed;
 
   this.tileArray = [];
   this.numberOfBombs = 0;
   this.correctlyMarkedBombs = 0;
   this.incorrectlyMarkedBombs = 0;
-  this.animTimer;
 
   this.TileType = {
     BLANK: 0, ONE: 1, TWO: 2, THREE: 3, FOUR: 4, FIVE: 5, SIX: 6,
@@ -140,33 +138,24 @@ BOOM.GameBoardModel.prototype.uncoverTile = function uncoverTile(vPos, hPos) {
     this.gameOver('lose');
   } else if (tile.tileType === this.TileType.BLANK) {
     tile.tileType = this.TileType.SAFE;
-    this.animTimer = 0;
     this.uncoverSafeZone(vPos, hPos);
   }
 };
 
 BOOM.GameBoardModel.prototype.gameOver = function gameOver(winOrLose) {
+  this.uncoverAllTiles();
   if (winOrLose === 'win') {
-    this.unCoverAllTiles();
     BOOM.gbView.gameOver('win');
   } else {
     BOOM.gbView.gameOver('lose');
   }
 };
 
-BOOM.GameBoardModel.prototype.unCoverAllTiles = function unCoverAllTiles() {
-  var animTimer;
+BOOM.GameBoardModel.prototype.uncoverAllTiles = function uncoverAllTiles() {
   for (var i = 0; i < this.tileArray.length; i++) {
     for (var j = 0; j < this.tileArray[i].length; j++) {
-      var _this = this;
-
-      (function (iCl, jCl) {
-        setTimeout(function () {
-          _this.toggleFlag(iCl, jCl);
-          BOOM.gbView.uncoverTile(iCl, jCl);
-        }, animTimer += _this.animSpeed);
-      }(i, j));
-
+      this.toggleFlag(i, j);
+      BOOM.gbView.uncoverTile(i, j);
     }
   }
 };
@@ -185,25 +174,17 @@ BOOM.GameBoardModel.prototype.uncoverSafeZone
           && hPos + j < this.hTiles) {
 
         var tile = this.tileArray[vPos + i][hPos + j];
-        var _this = this;
 
         // need to create closure with self-invoking
         // function in order to ensure that
         // each call of BOOM.gbView.uncoverTile() gets its own
-        // copy of i, j, and tile.
-        (function (vPosCl, xPosCl, tileCl) {
-
-          // stagger calls to gvView.uncoverTile() by
-          // animSpeed to create cascading animation
-          // effect when revealing tiles.
-          setTimeout(function () {
-            if (!tileCl.flag) {
-              tileCl.covered = false;
-              BOOM.gbView.uncoverTile(vPosCl, xPosCl);
-            }
-          }, _this.animTimer += _this.animSpeed);
-
-        }(vPos + i, hPos + j, tile));
+        // copy of i and j.
+        (function (vPosCl, hPosCl) {
+          if (!tile.flag) {
+            tile.covered = false;
+            BOOM.gbView.uncoverTile(vPosCl, hPosCl);
+          }
+        }(vPos + i, hPos + j));
 
         // before recursing on a tile, set tileType to SAFE
         // in order to prevent multiple call to the same tile.

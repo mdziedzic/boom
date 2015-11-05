@@ -42,12 +42,12 @@ BOOM.gbMVC = function gbMVC(difficulty) {
   BOOM.gbModel = new BOOM.GameBoardModel(
     BOOM.config.numberOfHTiles[difficulty],
     BOOM.config.numberOfVTiles[difficulty],
-    BOOM.config.bombPercent[difficulty],
-    BOOM.config.animSpeed[difficulty]);
+    BOOM.config.bombPercent[difficulty]);
   BOOM.gbView = new BOOM.GameBoardView(
     BOOM.config.numberOfHTiles[difficulty],
     BOOM.config.numberOfVTiles[difficulty],
-    BOOM.config.tileSize[difficulty]);
+    BOOM.config.tileSize[difficulty],
+    BOOM.config.animSpeed[difficulty]);
   BOOM.gbController = new BOOM.GameBoardController();
 
   BOOM.gbModel.createGameBoard();

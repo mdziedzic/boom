@@ -20,14 +20,20 @@ var BOOM = BOOM || {};
 
 $(document).ready(function () {
 
-  BOOM.GameBoardView = function GameBoardView(hTiles, vTiles, tileSize) {
+  BOOM.GameBoardView
+      = function GameBoardView(hTiles, vTiles, tileSize, animSpeed) {
+
     this.hTiles = hTiles;
     this.vTiles = vTiles;
     this.tileSize = tileSize;
-    this.$gameBoard;
+    this.animSpeed = animSpeed;
+
     this.gameBoardWidth = this.hTiles * this.tileSize;
     this.$gameBoardContainer = $('#gameboardcontainer');
     this.$gameBoardShaker = $('#gameboardshaker');
+    this.animTimer = 0;
+    this.lastAnimCall = new Date().getTime();
+    this.$gameBoard;
   };
 
   BOOM.GameBoardView.prototype.createGameBoard = function createGameBoard() {
@@ -101,12 +107,29 @@ $(document).ready(function () {
       tileText = '';
     }
 
-    $tile.removeClass('tile-covered')
-      .html('<p>' + tileText + '</p>')
-      .fadeTo(250, 1)
-      .addClass('tile-uncovered')
-      .addClass(tileClassName)
-      .unbind();
+    if (tileType === 9) {
+      $tile.addClass('bomb');
+    }
+
+    // check to see when last was covered in order to create cascading
+    // effect when multiple tiles are uncovered at the same time
+    // by staggering the uncoverings by animSpeed in the setTimeout
+    // block below.
+    var start = new Date().getTime();
+    if (start - this.lastAnimCall > 500) {
+      this.animTimer = 0;
+    }
+
+    this.lastAnimCall = start;
+
+    setTimeout(function () {
+      $tile.removeClass('tile-covered')
+        .html('<p>' + tileText + '</p>')
+        .fadeTo(250, 1)
+        .addClass('tile-uncovered')
+        .addClass(tileClassName)
+        .unbind();
+    }, this.animTimer += this.animSpeed);
   };
 
   // finds position of tile in 1-dimensional dom element #gameboard array.
@@ -117,13 +140,9 @@ $(document).ready(function () {
 
   BOOM.GameBoardView.prototype.gameOver = function gameOver(winOrLose) {
     if (winOrLose === 'win') {
-      $('h2').fadeTo(250, 0.75);
+      $('.victory').fadeTo(250, 1);
     } else if (winOrLose === 'lose') {
-      $('.tile-9')
-        .css('background-color', '#f00')
-        .css('color', '#fff');
       this.$gameBoardShaker.addClass('game-over-lose');
-
     }
 
     setTimeout(function () {
