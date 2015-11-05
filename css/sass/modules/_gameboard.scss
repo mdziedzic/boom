@@ -1,48 +1,54 @@
-
 #gameboardcontainer {
-    @include animation(fadeIn 0.5s ease-in);
-    display: none;
-    position: absolute;
-    top: 0;
-    left: 50%;
-    background-color: #fff;
-    border: 1px solid #fff;
-    box-shadow: -10px -10px 50px #111;
+  @include animation(fadeIn 0.5s ease-in);
+  display: none;
+  position: absolute;
+  top: 0;
+  left: 50%;
+  background-color: #fff;
+  border: 1px solid #fff;
+  box-shadow: -10px -10px 50px #111;
 }
 
 #gameboard {
-    margin: 0 auto;
+  margin: 0 auto;
 }
 
 .tile {
-    float: left;
-    border: 0.5px #777 solid;
-    font-size: 0.75em;
-    text-align: center;
-    color: #000;
+  float: left;
+  border-top: 1px #777 solid;
+  border-left: 1px #777 solid;
+  font-size: 0.75em;
+  text-align: center;
+  color: #000;
 }
 
 .tile-covered {
-    background-color: #444;
+  background-color: #555;
 }
 
 .tile-uncovered {
-    @include animation(removeTile 0.5s ease-in);
+  @include animation(removeTile 0.5s ease-in);
+  border: 0;
+}
+
+.tile-borders {
+  border-top: 1px #999 solid;
+  border-left: 1px #999 solid;
 }
 
 .tile-flagged {
-    background-color: #f80;
+  background-color: #f80;
 }
 
 .game-over-lose {
-    @include animation(shake-slow 3s ease-in-out);
-    @include animation-fill-mode(forwards);
+  @include animation(shake-slow 3s ease-in-out);
+  @include animation-fill-mode(forwards);
 }
 
 #gameboardshaker {
-    position: absolute;
-    top: 125px;
-    left: 50%;
+  position: absolute;
+  top: 125px;
+  left: 50%;
 }
 
 .tile-0,
@@ -56,19 +62,19 @@
 .tile-8,
 .tile-9,
 .tile-12 {
-    background-color: #aaa;
+  background-color: #aaa;
 
-    p {
-        @include vertical-align;
-        font-weight: bold;
-    }
+  p {
+    @include vertical-align;
+    font-weight: bold;
+  }
 }
 
 .tile-9 {
-    font-size: 2em;
+  font-size: 2em;
 }
 
 .bomb {
-    background-color: #f00;
-    color: #fff;
+  background-color: #f00;
+  color: #fff;
 }

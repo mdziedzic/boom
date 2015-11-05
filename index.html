@@ -4,60 +4,60 @@
 <!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
 <!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
 
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>BOOM</title>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>BOOM</title>
 
-        <!-- build:cssheader -->
-        <link rel="stylesheet" type="text/css" href="css/main.css">
-        <!-- endbuild -->
+	<!-- build:cssheader -->
+	<link rel="stylesheet" type="text/css" href="css/main.css">
+	<!-- endbuild -->
 
-        <link href='http://fonts.googleapis.com/css?family=Lato:300,400,600,100italic,300italic,700italic' rel='stylesheet' type='text/css'>
+	<link href='http://fonts.googleapis.com/css?family=Lato:300,400,600,100italic,300italic,700italic' rel='stylesheet' type='text/css'>
+	<link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700' rel='stylesheet' type='text/css'>
+</head>
 
-        <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700' rel='stylesheet' type='text/css'>
-    </head>
+<body>
+	<!--[if lt IE 7]>
+	<p class="browsehappy">You are using an <strong>outdated</strong> browser.
+  Please <a href="http://browsehappy.com/">upgrade your browser</a> to
+	improve your experience.</p>
+  <![endif]-->
 
-    <body>
-        <!--[if lt IE 7]>
-            <p class="browsehappy">You are using an <strong>outdated</strong> browser.
-                Please <a href="http://browsehappy.com/">upgrade your browser</a> to
-                improve your experience.</p>
-        <![endif]-->
+	<header>
+		<div class="l-content">
+			<h1 class="outline">BOOM</h1>
+			<nav>
+				<ul>
+					<li><p><a>noob</a></p></li>
+					<li><p><a>normal</a></p></li>
+					<li><p><a>hardcore</a></p></li>
+					<li><p><a>don't even</a></p></li>
+					<li><p><a>just because</a></p></li>
+				</ul>
+			</nav>
+			<p id="instructions">Minesweeper simulator. <em>Click</em> to uncover tile. <em>Shift-click</em> to flag/unflag suspected bombs. Game won when all bombs are correctly flagged. Game lost when it blows up in your face.<br />
+      If you need more help, feed the Google "how to play minesweeper" or some such.</p>
+		</div>
+	</header>
 
-        <header>
-            <div class="l-content">
-                <h1 class="outline">BOOM</h1>
-                <nav>
-                    <ul>
-                        <li><p><a href="">noob</a></p></li>
-                        <li><p><a href="">normal</a></p></li>
-                        <li><p><a href="">hardcore</a></p></li>
-                        <li><p><a href="">don't even</a></p></li>
-                        <li><p><a href="">just because</a></p></li>
-                    </ul>
-                </nav>
-                <p id="instructions">Minesweeper simulator. <em>Click</em> to uncover tile. <em>Shift-click</em> to flag/unflag suspected bombs. Game won when all bombs are correctly flagged. Game lost when it blows up in your face.<br />
-                If you need more help, check out this <a href ="http://www.wikihow.com/Play-Minesweeper" target="_blank">wikiHow.</a></p>
-            </div>
-        </header>
+		<div id="gameboardshaker">
+			<div id="gameboardcontainer"></div>
+		</div>
+		<h2 class="victory">victory!</h2>
 
-        <div id="gameboardshaker">
-            <div id="gameboardcontainer"></div>
-        </div>
-        <h2 class="victory">victory!</h2>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+		<script>window.jQuery || document.write('<script src="js/vendor/jquery-2.1.4.min.js"><\/script>')</script>
 
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
-        <script>window.jQuery || document.write('<script src="js/vendor/jquery-2.1.4.min.js"><\/script>')</script>
+		<script src="js/config.js"></script>
 
-        <script src="js/config.js"></script>
-
-        <!-- build:jsfooter -->
-        <script src="js/Tile.js"></script>
-        <script src="js/GameBoardModel.js"></script>
-        <script src="js/GameBoardView.js"></script>
-        <script src="js/GameBoardController.js"></script>
-        <script src="js/main.js"></script>
-        <!-- endbuild -->
-    </body>
+    <script src="js/config.js"></script>
+		<!-- build:jsfooter -->
+		<script src="js/Tile.js"></script>
+		<script src="js/GameBoardModel.js"></script>
+		<script src="js/GameBoardView.js"></script>
+		<script src="js/GameBoardController.js"></script>
+		<script src="js/main.js"></script>
+		<!-- endbuild -->
+</body>
 </html>

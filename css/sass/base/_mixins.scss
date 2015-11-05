@@ -1,144 +1,144 @@
 @mixin background-size($size) {
-    -webkit-background-size: $size;
-    -moz-background-size: $size;
-    -o-background-size: $size;
-    background-size: $size;
+  -webkit-background-size: $size;
+  -moz-background-size: $size;
+  -o-background-size: $size;
+  background-size: $size;
 }
 
 @mixin vertical-align {
-    position: relative;
-    top: 50%;
-    -webkit-transform: translateY(-50%);
-    -ms-transform: translateY(-50%);
-    transform: translateY(-50%);
+  position: relative;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
 }
 
 @include keyframes(fadeIn) {
-    0% {
-        @include transform(translate(0, -100px) scale(0.1));
-        opacity: 0;
-    }
+  0% {
+    @include transform(translate(0, -100px) scale(0.1));
+    opacity: 0;
+  }
 
-    60% {
-        @include transform(scale(1.2) translate(0, 0));
-    }
+  60% {
+    @include transform(scale(1.2) translate(0, 0));
+  }
 
-    100% {
-        @include transform(scale(1) translate(0, -0));
-        opacity: 1;
-    }
+  100% {
+    @include transform(scale(1) translate(0, -0));
+    opacity: 1;
+  }
 }
 
 @include keyframes(removeTile) {
-    0% {
-        @include transform(scale(1) translate(0, -0));
-        opacity: 1;
-    }
+  0% {
+    @include transform(scale(1) translate(0, -0));
+    opacity: 1;
+  }
 
-    40% {
-        @include transform(translate(0, 0) scale(2) rotate(0));
-        opacity: 1;
-    }
+  40% {
+    @include transform(translate(0, 0) scale(2) rotate(0));
+    opacity: 1;
+  }
 
-    100% {
-        @include transform(translate(0, 0) scale(0.1) rotate(0));
-        opacity: 0;
-    }
+  100% {
+    @include transform(translate(0, 0) scale(0.1) rotate(0));
+    opacity: 0;
+  }
 }
 
 @include keyframes(gameOverLose) {
-    0% {
-        @include transform(scale(1) rotate(0) translate(0, 0));
-    }
+  0% {
+    @include transform(scale(1) rotate(0) translate(0, 0));
+  }
 
-    20% {
-        @include transform(scale(1.1) rotate(0deg) translate(0, -10px));
-    }
+  20% {
+    @include transform(scale(1.1) rotate(0deg) translate(0, -10px));
+  }
 
-    40% {
-        @include transform(scale(1.2) rotate(-20deg) translate(0, 5px));
-    }
+  40% {
+    @include transform(scale(1.2) rotate(-20deg) translate(0, 5px));
+  }
 
-    60% {
-        @include transform(scale(1.1) rotate(20deg) translate(0, -5px));
-    }
+  60% {
+    @include transform(scale(1.1) rotate(20deg) translate(0, -5px));
+  }
 
-    80% {
-        @include transform(scale(0.9) rotate(-20deg) translate(0, 3px));
-    }
+  80% {
+    @include transform(scale(0.9) rotate(-20deg) translate(0, 3px));
+  }
 
-    100% {
-        @include transform(scale(1) rotate(0) translate(0, 0));
-    }
+  100% {
+    @include transform(scale(1) rotate(0) translate(0, 0));
+  }
 }
 
+// adapted from http://elrumordelaluz.github.io/csshake/
 @include keyframes (shake-slow) {
-    0% { @include transform(translate(0, 0) rotate(0)); }
-    2% { @include transform(translate(1px, 7px) rotate(-1.5deg)); }
-    4% { @include transform(translate(6px, -6px) rotate(-1.5deg)); }
-    6% { @include transform(translate(5px, 4px) rotate(0.5deg)); }
-    8% { @include transform(translate(10px, -7px) rotate(2.5deg)); }
-    10% { @include transform(translate(-6px, 10px) rotate(2.5deg)); }
-    12% { @include transform(translate(-6px, -6px) rotate(-0.5deg)); }
-    14% { @include transform(translate(-4px, 9px) rotate(-2.5deg)); }
-    16% { @include transform(translate(-4px, 4px) rotate(1.5deg)); }
-    18% { @include transform(translate(-2px, -3px) rotate(-2.5deg)); }
-    20% { @include transform(translate(3px, 9px) rotate(2.5deg)); }
-    22% { @include transform(translate(1px, -4px) rotate(0.5deg)); }
-    24% { @include transform(translate(9px, 3px) rotate(3.5deg)); }
-    26% { @include transform(translate(-3px, 3px) rotate(-1.5deg)); }
-    28% { @include transform(translate(10px, -7px) rotate(3.5deg)); }
-    30% { @include transform(translate(-6px, -1px) rotate(3.5deg)); }
-    32% { @include transform(translate(-5px, 8px) rotate(-2.5deg)); }
-    34% { @include transform(translate(2px, -2px) rotate(3.5deg)); }
-    36% { @include transform(translate(0, 3px) rotate(-0.5deg)); }
-    38% { @include transform(translate(-9px, -7px) rotate(-0.5deg)); }
-    40% { @include transform(translate(1px, -1px) rotate(0.5deg)); }
-    42% { @include transform(translate(-9px, 8px) rotate(0.5deg)); }
-    44% { @include transform(translate(1px, -2px) rotate(-0.5deg)); }
-    46% { @include transform(translate(-4px, -8px) rotate(1.5deg)); }
-    48% { @include transform(translate(-7px, 0) rotate(0.5deg)); }
-    50% { @include transform(translate(6px, -7px) rotate(-2.5deg)); }
-    52% { @include transform(translate(-1px, -2px) rotate(-2.5deg)); }
-    54% { @include transform(translate(8px, 0) rotate(2.5deg)); }
-    56% { @include transform(translate(-5px, -3px) rotate(2.5deg)); }
-    58% { @include transform(translate(5px, 2px) rotate(-2.5deg)); }
-    60% { @include transform(translate(5px, -3px) rotate(-1.5deg)); }
-    62% { @include transform(translate(1px, -8px) rotate(-1.5deg)); }
-    64% { @include transform(translate(7px, -7px) rotate(0.5deg)); }
-    66% { @include transform(translate(5px, -8px) rotate(1.5deg)); }
-    68% { @include transform(translate(-9px, -6px) rotate(3.5deg)); }
-    70% { @include transform(translate(-2px, -1px) rotate(-2.5deg)); }
-    72% { @include transform(translate(-4px, 3px) rotate(-2.5deg)); }
-    74% { @include transform(translate(8px, -7px) rotate(1.5deg)); }
-    76% { @include transform(translate(-2px, 7px) rotate(-1.5deg)); }
-    78% { @include transform(translate(3px, 7px) rotate(-1.5deg)); }
-    80% { @include transform(translate(1px, -7px) rotate(1.5deg)); }
-    82% { @include transform(translate(-6px, 2px) rotate(0.5deg)); }
-    84% { @include transform(translate(6px, 0) rotate(-1.5deg)); }
-    86% { @include transform(translate(0, 8px) rotate(-1.5deg)); }
-    88% { @include transform(translate(9px, -10px) rotate(-0.5deg) scale(1.5)); }
-    90% { @include transform(translate(1px, -200px) rotate(1.5deg) scale(3)); }
-    92% { @include transform(translate(0, -400px) rotate(-1.5deg) scale(6)); }
-    94% { @include transform(translate(-1px, -800px) rotate(2.5deg) scale(12)); }
-    96% { @include transform(translate(5px, -1600px) rotate(-2.5deg) scale(24)); }
-    98% { @include transform(translate(4px, -3200px) rotate(-0.5deg) scale(48)); }
-    100% { @include transform(translate(0, -6400px) rotate(0) scale(0.2)); }
+  0% { @include transform(translate(0, 0) rotate(0)); }
+  2% { @include transform(translate(1px, 7px) rotate(-1.5deg)); }
+  4% { @include transform(translate(6px, -6px) rotate(-1.5deg)); }
+  6% { @include transform(translate(5px, 4px) rotate(0.5deg)); }
+  8% { @include transform(translate(10px, -7px) rotate(2.5deg)); }
+  10% { @include transform(translate(-6px, 10px) rotate(2.5deg)); }
+  12% { @include transform(translate(-6px, -6px) rotate(-0.5deg)); }
+  14% { @include transform(translate(-4px, 9px) rotate(-2.5deg)); }
+  16% { @include transform(translate(-4px, 4px) rotate(1.5deg)); }
+  18% { @include transform(translate(-2px, -3px) rotate(-2.5deg)); }
+  20% { @include transform(translate(3px, 9px) rotate(2.5deg)); }
+  22% { @include transform(translate(1px, -4px) rotate(0.5deg)); }
+  24% { @include transform(translate(9px, 3px) rotate(3.5deg)); }
+  26% { @include transform(translate(-3px, 3px) rotate(-1.5deg)); }
+  28% { @include transform(translate(10px, -7px) rotate(3.5deg)); }
+  30% { @include transform(translate(-6px, -1px) rotate(3.5deg)); }
+  32% { @include transform(translate(-5px, 8px) rotate(-2.5deg)); }
+  34% { @include transform(translate(2px, -2px) rotate(3.5deg)); }
+  36% { @include transform(translate(0, 3px) rotate(-0.5deg)); }
+  38% { @include transform(translate(-9px, -7px) rotate(-0.5deg)); }
+  40% { @include transform(translate(1px, -1px) rotate(0.5deg)); }
+  42% { @include transform(translate(-9px, 8px) rotate(0.5deg)); }
+  44% { @include transform(translate(1px, -2px) rotate(-0.5deg)); }
+  46% { @include transform(translate(-4px, -8px) rotate(1.5deg)); }
+  48% { @include transform(translate(-7px, 0) rotate(0.5deg)); }
+  50% { @include transform(translate(6px, -7px) rotate(-2.5deg)); }
+  52% { @include transform(translate(-1px, -2px) rotate(-2.5deg)); }
+  54% { @include transform(translate(8px, 0) rotate(2.5deg)); }
+  56% { @include transform(translate(-5px, -3px) rotate(2.5deg)); }
+  58% { @include transform(translate(5px, 2px) rotate(-2.5deg)); }
+  60% { @include transform(translate(5px, -3px) rotate(-1.5deg)); }
+  62% { @include transform(translate(1px, -8px) rotate(-1.5deg)); }
+  64% { @include transform(translate(7px, -7px) rotate(0.5deg)); }
+  66% { @include transform(translate(5px, -8px) rotate(1.5deg)); }
+  68% { @include transform(translate(-9px, -6px) rotate(3.5deg)); }
+  70% { @include transform(translate(-2px, -1px) rotate(-2.5deg)); }
+  72% { @include transform(translate(-4px, 3px) rotate(-2.5deg)); }
+  74% { @include transform(translate(8px, -7px) rotate(1.5deg)); }
+  76% { @include transform(translate(-2px, 7px) rotate(-1.5deg)); }
+  78% { @include transform(translate(3px, 7px) rotate(-1.5deg)); }
+  80% { @include transform(translate(1px, -7px) rotate(1.5deg)); }
+  82% { @include transform(translate(-6px, 2px) rotate(0.5deg)); }
+  84% { @include transform(translate(6px, 0) rotate(-1.5deg)); }
+  86% { @include transform(translate(0, 8px) rotate(-1.5deg)); }
+  88% { @include transform(translate(9px, -10px) rotate(-0.5deg) scale(1.5)); }
+  90% { @include transform(translate(1px, -200px) rotate(1.5deg) scale(3)); }
+  92% { @include transform(translate(0, -400px) rotate(-1.5deg) scale(6)); }
+  94% { @include transform(translate(-1px, -800px) rotate(2.5deg) scale(12)); }
+  96% { @include transform(translate(5px, -1600px) rotate(-2.5deg) scale(24)); }
+  98% { @include transform(translate(4px, -3200px) rotate(-0.5deg) scale(48)); }
+  100% { @include transform(translate(0, -6400px) rotate(0) scale(0.2)); }
 }
-
 
 @include keyframes(rotate) {
-    0% {
-        @include transform(rotate(-1720deg) scale(1));
-        opacity: 0;
-    }
+  0% {
+    @include transform(rotate(-1720deg) scale(1));
+    opacity: 0;
+  }
 
-    60% {
-        @include transform(rotate(0deg) scale(1.5));
-    }
+  60% {
+    @include transform(rotate(0deg) scale(1.5));
+  }
 
-    100% {
-        @include transform(rotate(0deg) scale(1));
-        opacity: 1;
-    }
+  100% {
+    @include transform(rotate(0deg) scale(1));
+    opacity: 1;
+  }
 }

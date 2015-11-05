@@ -111,10 +111,9 @@ $(document).ready(function () {
       $tile.addClass('bomb');
     }
 
-    // check to see when last was covered in order to create cascading
-    // effect when multiple tiles are uncovered at the same time
-    // by staggering the uncoverings by animSpeed in the setTimeout
-    // block below.
+    // check to see when last tile was uncovered. if recently (<500ms), create
+    // cascading effect by staggering subsequent uncoverings by animSpeed in
+    // the setTimeout block below.
     var start = new Date().getTime();
     if (start - this.lastAnimCall > 500) {
       this.animTimer = 0;
@@ -129,6 +128,9 @@ $(document).ready(function () {
         .addClass('tile-uncovered')
         .addClass(tileClassName)
         .unbind();
+        setTimeout(function () {
+          $tile.addClass('tile-borders');
+        }, 500);
     }, this.animTimer += this.animSpeed);
   };
 

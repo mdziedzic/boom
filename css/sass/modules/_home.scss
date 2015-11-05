@@ -1,61 +1,55 @@
 body {
-	display: none;
-
-	-moz-user-select: none; // Firefox
-	-ms-user-select: none; // Internet Explorer
-	-khtml-user-select: none; // KHTML browsers (e.g. Konqueror)
-	-webkit-user-select: none; // Chrome, Safari, and Opera
-	-webkit-touch-callout: none; // Disable Android and iOS callouts
-
+  @include user-select(none);
+  display: none;
 }
 
 header,
 footer,
 section {
-	width: 100%;
+  width: 100%;
 }
 
 h1 {
-	text-align: center;
-	font-size: 12em;
+  font-size: 12em;
+  text-align: center;
 }
 
 h2 {
-	display: none;
-	position: relative;
-	z-index: 5000;
-	margin: 0 auto;
-	margin-top: -50px;
-	text-align: center;
+  display: none;
+  position: relative;
+  z-index: 5000;
+  margin: 0 auto;
+  margin-top: -50px;
+  text-align: center;
 }
 
 nav {
-	position: relative;
-	top: -100px;
+  position: relative;
+  top: -100px;
 }
 
 #instructions {
-	width: 500px;
-	margin: 0 auto;
-	margin-top: -60px;
-	text-align: center;
+  width: 500px;
+  margin: 0 auto;
+  margin-top: -60;
+  text-align: center;
 }
 
 ul {
-	text-align: center;
-	font-size: 3em;
+  font-size: 3em;
+  text-align: center;
 
-	li {
-		opacity: 0.5;
-		line-height: 0.5em;
-	}
+  li {
+    opacity: 0.5;
+    line-height: 0.5em;
+  }
+}
+
+em {
+  font-weight: bold;
 }
 
 .outline {
-    color: #000;
-    text-shadow:
-    -1px -1px 0 #ccc,
-    1px -1px 0 #ccc,
-    -1px 1px 0 #ccc,
-    1px 1px 0 #ccc;
+  text-shadow: -1px -1px 0 #ccc, 1px -1px 0 #ccc, -1px 1px 0 #ccc, 1px 1px 0 #ccc;
+  color: #000;
 }
