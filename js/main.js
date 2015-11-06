@@ -17,10 +17,12 @@ www.eggfoo.com
 var BOOM = BOOM || {};
 
 $(document).ready(function () {
+  var $difficulty = $('ul li a');
 
   $('body').fadeIn(750);
+  $difficulty.fadeTo(250, 0.5);
 
-  $('ul li').hover(
+  $difficulty.hover(
     function () {
       $(this).fadeTo(250, 1);
     },
@@ -32,7 +34,7 @@ $(document).ready(function () {
       event.preventDefault();
       $('ul, p').hide();
       $('header').fadeTo(250, 0.75);
-      BOOM.gbMVC($(this).index());
+      BOOM.gbMVC($(this).parent().parent().index());
     }
   );
 });
