@@ -154,7 +154,6 @@ BOOM.GameBoardModel.prototype.gameOver = function gameOver(winOrLose) {
 BOOM.GameBoardModel.prototype.uncoverAllTiles = function uncoverAllTiles() {
   for (var i = 0; i < this.tileArray.length; i++) {
     for (var j = 0; j < this.tileArray[i].length; j++) {
-      this.toggleFlag(i, j);
       BOOM.gbView.uncoverTile(i, j);
     }
   }
