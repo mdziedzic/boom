@@ -122,7 +122,7 @@ BOOM.GameBoardModel.prototype.toggleFlag = function toggleFlag(vPos, hPos) {
 
   // game won!
   if (this.correctlyMarkedBombs === this.numberOfBombs
-    && this.incorrectlyMarkedBombs === 0) {
+      && this.incorrectlyMarkedBombs === 0) {
 
     this.gameOver('win');
   }

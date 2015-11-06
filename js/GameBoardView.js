@@ -128,9 +128,9 @@ $(document).ready(function () {
         .addClass('tile-uncovered')
         .addClass(tileClassName)
         .unbind();
-        setTimeout(function () {
-          $tile.addClass('tile-borders');
-        }, 500);
+      setTimeout(function () {
+        $tile.addClass('tile-borders');
+      }, 500);
     }, this.animTimer += this.animSpeed);
   };
 
