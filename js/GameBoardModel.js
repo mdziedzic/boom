@@ -179,7 +179,7 @@ BOOM.GameBoardModel.prototype.uncoverSafeZone
         }
 
         // before recursing on a tile, set tileType to SAFE
-        // in order to prevent multiple call to the same tile.
+        // in order to prevent multiple calls to the same tile.
         if (tile.tileType === this.TileType.BLANK
             && !tile.flag) {
 
